@@ -1,13 +1,13 @@
 <div class="p-4">
 
-  <!-- 🔹 ANALYTICS -->
+  <!-- 🔹 ORIGINAL ANALYTICS -->
   <div class="grid mb-4">
     <div class="col-12 md:col-3" *ngFor="let a of analytics">
       <p-card class="shadow-2 border-round-xl">
-        <div class="flex align-items-center justify-content-between">
+        <div class="flex justify-content-between">
           <div>
             <div class="text-600 text-sm">{{a.title}}</div>
-            <div class="text-2xl font-semibold mt-1">{{a.value}}</div>
+            <div class="text-2xl font-semibold">{{a.value}}</div>
           </div>
           <i class="pi {{a.icon}} text-3xl {{a.color}}"></i>
         </div>
@@ -15,108 +15,113 @@
     </div>
   </div>
 
+  <!-- 🔹 KPI CARDS -->
+  <div class="grid mb-4">
+    <div class="col-12 md:col-3" *ngFor="let k of kpiStats">
+      <p-card class="shadow-2 border-round-xl">
+        <div class="flex justify-content-between">
+          <div>
+            <div class="text-sm text-600">{{k.title}}</div>
+            <div class="text-2xl font-semibold">{{k.value}}</div>
+            <small class="{{k.trendColor}}">{{k.trend}}</small>
+          </div>
+          <i class="pi {{k.icon}} text-3xl text-primary"></i>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
   <!-- 🔹 CHARTS -->
   <div class="grid mb-4">
-
     <div class="col-12 md:col-8">
-      <p-card header="Revenue Trend" class="shadow-2 border-round-xl">
-        <p-chart type="line" [data]="lineData"></p-chart>
-      </p-card>
+      <p-card header="Revenue Trend"><p-chart type="line" [data]="lineData"></p-chart></p-card>
     </div>
-
     <div class="col-12 md:col-4">
-      <p-card header="Task Status" class="shadow-2 border-round-xl">
-        <p-chart type="doughnut" [data]="doughnutData"></p-chart>
-      </p-card>
+      <p-card header="Task Status"><p-chart type="doughnut" [data]="doughnutData"></p-chart></p-card>
     </div>
-
   </div>
 
-  <!-- 🔹 KANBAN -->
   <div class="grid mb-4">
-
-    <div class="col-12 md:col-3">
-      <div class="font-semibold mb-2">To Do</div>
-      <div *ngFor="let t of todo" class="mb-3">
-        <p-card class="shadow-1 border-round-lg">
-          {{t.title}}
-          <p-tag [value]="t.tag" class="mt-2"></p-tag>
-        </p-card>
-      </div>
-    </div>
-
-    <div class="col-12 md:col-3">
-      <div class="font-semibold mb-2">In Progress</div>
-      <div *ngFor="let t of progress" class="mb-3">
-        <p-card class="shadow-1 border-round-lg">
-          {{t.title}}
-          <p-progressBar [value]="60"></p-progressBar>
-        </p-card>
-      </div>
-    </div>
-
-    <div class="col-12 md:col-3">
-      <div class="font-semibold mb-2">Testing</div>
-      <div *ngFor="let t of testing" class="mb-3">
-        <p-card class="shadow-1 border-round-lg">
-          {{t.title}}
-          <p-tag value="Low" severity="success"></p-tag>
-        </p-card>
-      </div>
-    </div>
-
-    <div class="col-12 md:col-3">
-      <div class="font-semibold mb-2">Done</div>
-      <div *ngFor="let t of done" class="mb-3">
-        <p-card class="shadow-1 border-round-lg">
-          {{t.title}}
-          <p-tag value="Completed" severity="success"></p-tag>
-        </p-card>
-      </div>
-    </div>
-
+    <div class="col-12 md:col-4"><p-card header="Sales"><p-chart type="bar" [data]="barData"></p-chart></p-card></div>
+    <div class="col-12 md:col-4"><p-card header="Department"><p-chart type="pie" [data]="pieData"></p-chart></p-card></div>
+    <div class="col-12 md:col-4"><p-card header="Performance"><p-chart type="radar" [data]="radarData"></p-chart></p-card></div>
   </div>
 
-  <!-- 🔹 TABLE + TIMELINE -->
+  <!-- 🔹 USERS TABLE -->
+  <p-card header="Users" class="mb-4">
+    <p-table [value]="users">
+      <ng-template pTemplate="header">
+        <tr><th>Name</th><th>Role</th><th>Status</th></tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-u>
+        <tr>
+          <td>{{u.name}}</td>
+          <td>{{u.role}}</td>
+          <td><p-tag [value]="u.status" [severity]="u.status=='Active'?'success':'danger'"></p-tag></td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+
+  <!-- 🔹 PROJECT TABLE -->
+  <p-card header="Projects" class="mb-4">
+    <p-table [value]="projects">
+      <ng-template pTemplate="header">
+        <tr><th>Name</th><th>Manager</th><th>Status</th><th>Budget</th><th>Actions</th></tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-p>
+        <tr>
+          <td>{{p.name}}</td>
+          <td>{{p.manager}}</td>
+          <td><p-tag [value]="p.status"></p-tag></td>
+          <td>{{p.budget}}</td>
+          <td>
+            <button pButton icon="pi pi-eye" class="p-button-text"></button>
+            <button pButton icon="pi pi-pencil" class="p-button-text"></button>
+            <button pButton icon="pi pi-trash" class="p-button-text p-button-danger"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+
+  <!-- 🔹 TIMELINES -->
   <div class="grid">
-
-    <div class="col-12 md:col-7">
-      <p-card header="Users" class="shadow-2 border-round-xl">
-        <p-table [value]="users">
-          <ng-template pTemplate="header">
-            <tr>
-              <th>Name</th>
-              <th>Role</th>
-              <th>Status</th>
-            </tr>
-          </ng-template>
-
-          <ng-template pTemplate="body" let-user>
-            <tr>
-              <td>{{user.name}}</td>
-              <td>{{user.role}}</td>
-              <td>
-                <p-tag [value]="user.status"
-                       [severity]="user.status === 'Active' ? 'success' : 'danger'">
-                </p-tag>
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
-      </p-card>
-    </div>
-
-    <div class="col-12 md:col-5">
-      <p-card header="Recent Activity" class="shadow-2 border-round-xl">
+    <div class="col-12 md:col-6">
+      <p-card header="Recent Activity">
         <p-timeline [value]="activities">
-          <ng-template pTemplate="content" let-event>
-            <div class="font-medium">{{event.status}}</div>
-            <small class="text-600">{{event.date}}</small>
+          <ng-template pTemplate="content" let-e>
+            <div>{{e.status}}</div>
+            <small class="text-600">{{e.date}}</small>
           </ng-template>
         </p-timeline>
       </p-card>
     </div>
 
+    <div class="col-12 md:col-6">
+      <p-card header="Milestones">
+        <!-- <p-timeline [value]="milestones" align="alternate">
+          <ng-template pTemplate="content" let-e>
+            <div>{{e.status}}</div>
+            <small class="text-600">{{e.date}}</small>
+          </ng-template>
+        </p-timeline> -->
+        <p-timeline [value]="milestones" align="alternate">
+
+          <ng-template pTemplate="marker" let-event>
+            <span class="flex w-2rem h-2rem align-items-center justify-content-center border-circle bg-primary text-white">
+              <i class="pi pi-check"></i>
+            </span>
+          </ng-template>
+
+          <ng-template pTemplate="content" let-event>
+            <div class="font-medium">{{event.status}}</div>
+            <small class="text-600">{{event.date}}</small>
+          </ng-template>
+
+        </p-timeline>
+      </p-card>
+    </div>
   </div>
 
 </div>

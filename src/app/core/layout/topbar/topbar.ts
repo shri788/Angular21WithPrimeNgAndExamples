@@ -77,6 +77,7 @@ export class Topbar implements AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.isBrowserReady = true;
+      console.log('Browser is ready, Topbar component initialized.');
     });
   }
 }
