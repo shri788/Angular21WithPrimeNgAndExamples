@@ -1,0 +1,45 @@
+<p-stepper [(value)]="step">
+
+  <!-- Step List -->
+  <p-step-list>
+    <p-step [value]="0">Personal</p-step>
+    <p-step [value]="1">Address</p-step>
+    <p-step [value]="2">Confirm</p-step>
+  </p-step-list>
+
+  <!-- Step Panels -->
+  <p-step-panels>
+
+    <!-- Step 1 -->
+    <p-step-panel [value]="0">
+      <ng-template pTemplate="content">
+        <h3>Personal Info</h3>
+        <input pInputText placeholder="Name" />
+        <br><br>
+        <button pButton label="Next" (click)="step = 1"></button>
+      </ng-template>
+    </p-step-panel>
+
+    <!-- Step 2 -->
+    <p-step-panel [value]="1">
+      <ng-template pTemplate="content">
+        <h3>Address</h3>
+        <input pInputText placeholder="City" />
+        <br><br>
+        <button pButton label="Back" class="p-button-secondary" (click)="step = 0"></button>
+        <button pButton label="Next" (click)="step = 2"></button>
+      </ng-template>
+    </p-step-panel>
+
+    <!-- Step 3 -->
+    <p-step-panel [value]="2">
+      <ng-template pTemplate="content">
+        <h3>Confirm</h3>
+        <button pButton label="Back" class="p-button-secondary" (click)="step = 1"></button>
+        <button pButton label="Submit" class="p-button-success"></button>
+      </ng-template>
+    </p-step-panel>
+
+  </p-step-panels>
+
+</p-stepper>

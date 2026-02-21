@@ -1,0 +1,44 @@
+<p-card styleClass="premium-card">
+
+  <!-- PREMIUM HEADER -->
+  <ng-template pTemplate="header">
+    <div class="premium-header">
+      <span class="premium-badge">★ Premium</span>
+    </div>
+  </ng-template>
+
+  <!-- AVATAR + NAME -->
+  <div class="profile-section">
+    <p-avatar 
+        image="https://i.pravatar.cc/120" 
+        shape="circle" 
+        size="xlarge">
+    </p-avatar>
+
+    <h2 class="name">Karan Sharma</h2>
+    <p class="role">Senior Developer</p>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <p class="description">
+    Passionate full-stack developer with expertise in Angular, .NET, and Cloud.
+    Loves building scalable enterprise applications and clean UI.
+  </p>
+
+  <p-divider></p-divider>
+
+  <!-- DETAILS -->
+  <div class="details">
+    <div><b>Email:</b> karan@mail.com</div>
+    <div><b>Location:</b> India</div>
+    <div><b>Experience:</b> 5 Years</div>
+    <div><b>Projects:</b> 18</div>
+  </div>
+
+  <!-- ACTIONS -->
+  <ng-template pTemplate="footer">
+    <button pButton label="View Profile" icon="pi pi-user" class="p-button-text"></button>
+    <button pButton label="Message" icon="pi pi-envelope"></button>
+  </ng-template>
+
+</p-card>

@@ -1,0 +1,23 @@
+<p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
+<label>Accept Terms</label>
+
+<div *ngFor="let skill of skills">
+  <p-checkbox 
+    name="skills"
+    [value]="skill"
+    [(ngModel)]="selectedSkills">
+  </p-checkbox>
+  <label>{{skill}}</label>
+</div>
+
+
+<div class="flex align-items-center gap-2">
+  <p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
+  <label>Remember Me</label>
+</div>
+
+<p-checkbox [(ngModel)]="checked" binary="true" [disabled]="true"></p-checkbox>
+
+<p-checkbox [(ngModel)]="checked" binary="true" styleClass="p-checkbox-sm"></p-checkbox>
+<p-checkbox [(ngModel)]="checked" binary="true"></p-checkbox>
+<p-checkbox [(ngModel)]="checked" binary="true" styleClass="p-checkbox-lg"></p-checkbox>

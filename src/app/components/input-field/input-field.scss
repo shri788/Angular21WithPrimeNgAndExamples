@@ -1,0 +1,14 @@
+.ng-valid-field .p-inputtext,
+.ng-valid-field .p-inputnumber-input {
+  border: 2px solid #22c55e !important;   /* Green */
+}
+
+.ng-invalid-field .p-inputtext,
+.ng-invalid-field .p-inputnumber-input {
+  border: 2px solid #ef4444 !important;   /* Red */
+}
+
+.error {
+  color: #ef4444;
+  font-size: 12px;
+}

@@ -1,0 +1,22 @@
+<p-menubar [model]="items" styleClass="topbar">
+
+    <!-- LEFT LOGO -->
+    <ng-template pTemplate="start">
+        <div class="logo">MyApp</div>
+    </ng-template>
+
+    <!-- RIGHT SIDE -->
+    <ng-template pTemplate="end">
+        <button pButton icon="pi pi-bell" class="p-button-text"></button>
+
+        <p-menu #profileMenu [popup]="true" [model]="profileItems"></p-menu>
+
+        <p-avatar 
+            image="https://i.pravatar.cc/40" 
+            shape="circle"
+            (click)="profileMenu.toggle($event)"
+            style="cursor:pointer">
+        </p-avatar>
+    </ng-template>
+
+</p-menubar>

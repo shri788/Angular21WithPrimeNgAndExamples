@@ -1,0 +1,37 @@
+<button pButton label="Hover me" pTooltip="This is tooltip"></button>
+
+
+<button pButton label="Top" pTooltip="Top tooltip" tooltipPosition="top"></button>
+<button pButton label="Bottom" pTooltip="Bottom tooltip" tooltipPosition="bottom"></button>
+<button pButton label="Left" pTooltip="Left tooltip" tooltipPosition="left"></button>
+<button pButton label="Right" pTooltip="Right tooltip" tooltipPosition="right"></button>
+
+
+<i class="pi pi-info-circle" pTooltip="More info"></i>
+
+
+<button pButton 
+        label="Hover" 
+        pTooltip="Delayed tooltip" 
+        [showDelay]="500" 
+        [hideDelay]="300">
+</button>
+
+
+<button pButton [pTooltip]="tooltipText" label="Hover"></button>
+
+
+<span pTooltip="Disabled button tooltip">
+  <button pButton label="Disabled" [disabled]="true"></button>
+</span>
+
+<button 
+  pButton 
+  icon="pi pi-trash" 
+  pTooltip="Delete record">
+</button>
+
+
+<button pButton label="Custom" pTooltip="Styled tooltip" tooltipStyleClass="my-tooltip"></button>
+
+<button pButton pTooltip="Tooltip"></button>

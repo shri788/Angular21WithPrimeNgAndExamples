@@ -1,0 +1,23 @@
+<p-galleria
+  [value]="images"
+  [showThumbnails]="true"
+  [showItemNavigators]="true"
+  [showItemNavigatorsOnHover]="true"
+  [circular]="true"
+  [autoPlay]="true"
+  [transitionInterval]="3000"
+  [responsiveOptions]="responsiveOptions"
+  [containerStyle]="{ 'max-width': '700px', margin: 'auto' }"
+  ngSkipHydration >
+
+  <!-- Main Image -->
+  <ng-template pTemplate="item" let-item>
+    <img [src]="item.itemImageSrc" style="width:100%; display:block;" />
+  </ng-template>
+
+  <!-- Thumbnail -->
+  <ng-template pTemplate="thumbnail" let-item>
+    <img [src]="item.thumbnailImageSrc" style="width:100%; display:block;" />
+  </ng-template>
+
+</p-galleria>

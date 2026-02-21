@@ -1,0 +1,30 @@
+<p-badge value="5"></p-badge>
+
+<button pButton type="button" icon="pi pi-bell" label="Notifications">
+  <p-badge value="3" severity="danger"></p-badge>
+</button>
+
+
+<span class="p-overlay-badge">
+  <i class="pi pi-shopping-cart" style="font-size:2rem"></i>
+  <p-badge value="4" severity="info"></p-badge>
+</span>
+
+
+<p-badge severity="success"></p-badge>  <!-- green dot -->
+<p-badge severity="danger"></p-badge>   <!-- red dot -->
+<p-badge severity="danger"></p-badge>  <!-- orange dot -->
+
+
+<p-badge value="New" severity="success"></p-badge>
+<p-badge value="Pending" severity="danger"></p-badge>
+<p-badge value="Error" severity="danger"></p-badge>
+<p-badge value="Info" severity="info"></p-badge>
+
+
+<p-badge [value]="count" severity="danger"></p-badge>
+<button pButton label="Increase" (click)="count += 1"></button>
+
+<p-badge value="Small" size="small"></p-badge>
+<p-badge value="Normal"></p-badge>
+<p-badge value="Large" size="large"></p-badge>

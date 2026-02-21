@@ -1,0 +1,74 @@
+<form [formGroup]="form" class="p-fluid">
+
+  <!-- ================= SINGLE ================= -->
+  <p-floatlabel>
+    <p-autocomplete
+      formControlName="city"
+      [suggestions]="filteredCities"
+      (completeMethod)="searchCity($event)"
+      field="name"
+      [dropdown]="true"
+      [forceSelection]="true"
+      placeholder="Search City"
+      optionLabel="name"
+      optionValue="city"
+      [class.ng-valid-field]="isValid('city')"
+      [class.ng-invalid-field]="isInvalid('city')"
+    ></p-autocomplete>
+    <label>Select City</label>
+  </p-floatlabel>
+
+  <small *ngIf="isInvalid('city')" class="error">
+    City required
+  </small>
+
+  <br /><br />
+
+  <!-- ================= MULTIPLE ================= -->
+  <p-floatlabel>
+    <p-autocomplete
+      formControlName="multiCity"
+      [suggestions]="filteredCities"
+      (completeMethod)="searchCity($event)"
+      field="name"
+      [multiple]="true"
+      [dropdown]="true"
+      optionLabel="name"
+      optionValue="city"
+      [forceSelection]="true"
+      placeholder="Select Multiple Cities"
+      [class.ng-valid-field]="isValid('multiCity')"
+      [class.ng-invalid-field]="isInvalid('multiCity')"
+    ></p-autocomplete>
+    <label>Multiple Cities</label>
+
+    <!-- Dropdown item (show NAME) -->
+    <ng-template let-city pTemplate="item">
+      {{ city.name }}
+    </ng-template>
+
+    <!-- Selected chips (show CODE only) -->
+    <ng-template let-city pTemplate="selectedItem">
+      {{ city.code || city }}
+    </ng-template>
+  </p-floatlabel>
+
+  <small *ngIf="isInvalid('multiCity')" class="error">
+    Select at least one
+  </small>
+
+  <br /><br />
+
+  <!-- ================= DISABLED ================= -->
+  <p-floatlabel>
+    <p-autocomplete
+      formControlName="disabledCity"
+      [suggestions]="cities"
+      field="name"
+      [dropdown]="true"
+      placeholder="Disabled"
+    ></p-autocomplete>
+    <label>Disabled</label>
+  </p-floatlabel>
+
+</form>

@@ -1,0 +1,70 @@
+<form [formGroup]="form">
+
+    
+<p-floatlabel>
+  <p-select
+    [options]="cities"
+    formControlName="city"
+    optionLabel="name"
+    optionValue="code"
+    placeholder="Select City"
+    [class.ng-valid-field]="isValid('city')"
+    [class.ng-invalid-field]="isInvalid('city')"
+  />
+  <label>Select City</label>
+</p-floatlabel>
+
+<small *ngIf="isInvalid('city')" class="error">
+  City is required
+</small>
+
+<br/><br/>
+
+<p-floatlabel>
+  <p-multiselect
+    [options]="skills"
+    formControlName="skills"
+    optionLabel="name"
+    optionValue="code"
+    placeholder="Select Skills"
+    display="chip"
+    [class.ng-valid-field]="isValid('skills')"
+    [class.ng-invalid-field]="isInvalid('skills')"
+  />
+  <label>Select Skills</label>
+</p-floatlabel>
+
+<small *ngIf="isInvalid('skills')" class="error">
+  Select at least one skill
+</small>
+
+<br/><br/>
+
+<p-floatlabel>
+  <p-select
+    [options]="cities"
+    formControlName="disabledSelect"
+    optionLabel="name"
+    optionValue="code"
+    placeholder="Disabled"
+  />
+  <label>Disabled Select</label>
+</p-floatlabel>
+
+
+<p-floatlabel>
+  <p-multiselect
+    [options]="skills"
+    formControlName="skills"
+    optionLabel="name"
+    optionValue="code"
+    optionDisabled="disabled"
+    placeholder="Select Skills"
+    display="chip"
+    [class.ng-valid-field]="isValid('skills')"
+    [class.ng-invalid-field]="isInvalid('skills')"
+  />
+  <label>Select Skills</label>
+</p-floatlabel>
+
+</form>

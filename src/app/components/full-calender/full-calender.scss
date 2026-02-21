@@ -1,0 +1,7 @@
+@import 'tippy.js/dist/tippy.css';
+@import 'tippy.js/themes/light-border.css';
+
+:host ::ng-deep .fc-daygrid-event {
+  border-radius: 4px;
+  font-size: 12px;
+}

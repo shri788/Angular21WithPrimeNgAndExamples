@@ -1,0 +1,23 @@
+/* VALID */
+.ng-valid-field .p-inputtext {
+  border: 2px solid #22c55e !important;
+  border-radius: 6px;
+}
+
+/* INVALID */
+.ng-invalid-field .p-inputtext {
+  border: 2px solid #ef4444 !important;
+  border-radius: 6px;
+}
+
+/* DISABLED */
+.p-datepicker.p-disabled .p-inputtext {
+  background: #f3f4f6 !important;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 12px;
+}

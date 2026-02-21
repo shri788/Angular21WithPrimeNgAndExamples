@@ -1,0 +1,53 @@
+<p-menubar [model]="items" styleClass="topbar">
+
+  <!-- LEFT LOGO -->
+  <ng-template pTemplate="start">
+    <div class="logo">MyApp</div>
+  </ng-template>
+
+  <!-- RIGHT SIDE -->
+  <ng-template pTemplate="end">
+
+    <!-- Search -->
+    <span class="p-input-icon-left mr-3">
+      <i class="pi pi-search"></i>
+      <input pInputText placeholder="Search" />
+    </span>
+
+    <!-- Notification -->
+    <span class="p-overlay-badge mr-3">
+      <i class="pi pi-bell" style="font-size:1.4rem"></i>
+      <p-badge value="3" severity="danger"></p-badge>
+    </span>
+
+    <!-- Profile Menu -->
+    <p-menu #profileMenu [popup]="true" [model]="profileItems"></p-menu>
+
+    <p-avatar 
+      image="https://i.pravatar.cc/40" 
+      shape="circle"
+      style="cursor:pointer"
+      (click)="profileMenu.toggle($event)">
+    </p-avatar>
+
+  </ng-template>
+
+</p-menubar>
+
+
+
+<p-toolbar>
+
+  <div class="p-toolbar-group-left">
+    <button pButton icon="pi pi-bars" class="p-button-text"></button>
+    <span class="logo ml-2">MyApp</span>
+  </div>
+
+  <div class="p-toolbar-group-right">
+    <button pButton icon="pi pi-bell" class="p-button-text"></button>
+    <p-avatar image="https://i.pravatar.cc/40" shape="circle"></p-avatar>
+  </div>
+
+</p-toolbar>
+
+

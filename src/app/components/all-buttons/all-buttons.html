@@ -1,0 +1,51 @@
+<h3>Standard</h3>
+
+<button pButton label="Primary"></button>
+<button pButton label="Secondary" class="p-button-secondary"></button>
+<button pButton label="Success" class="p-button-success"></button>
+<button pButton label="Info" class="p-button-info"></button>
+<button pButton label="Warning" class="p-button-warning"></button>
+<button pButton label="Danger" class="p-button-danger"></button>
+<button pButton label="Help" class="p-button-help"></button>
+
+
+<h3>Variants</h3>
+
+<button pButton label="Text" class="p-button-text"></button>
+<button pButton label="Outlined" class="p-button-outlined"></button>
+<button pButton label="Raised" class="p-button-raised"></button>
+<button pButton label="Rounded" class="p-button-rounded"></button>
+<button pButton label="Plain" class="p-button-plain"></button>
+
+
+<h3>Icon Buttons</h3>
+
+<button pButton icon="pi pi-check"></button>
+<button pButton icon="pi pi-user" label="Profile"></button>
+<button pButton icon="pi pi-trash" class="p-button-danger"></button>
+<button pButton icon="pi pi-search" class="p-button-rounded p-button-text"></button>
+
+
+<h3>State</h3>
+
+<button pButton label="Loading" [loading]="true"></button>
+<button pButton label="Disabled" [disabled]="true"></button>
+
+
+<h3>Sizes</h3>
+
+<button pButton label="Small" size="small"></button>
+<button pButton label="Normal"></button>
+<button pButton label="Large" size="large"></button>
+
+<p-splitButton label="Save" icon="pi pi-check" [model]="items"></p-splitButton>
+
+<p-toggleButton 
+    [(ngModel)]="checked"
+    onLabel="ON"
+    offLabel="OFF"
+    icon="pi pi-check"
+    offIcon="pi pi-times">
+</p-toggleButton>
+
+<p-speedDial [model]="speedItems" direction="up"></p-speedDial>

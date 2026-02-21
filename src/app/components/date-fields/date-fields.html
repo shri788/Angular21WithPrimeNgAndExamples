@@ -1,0 +1,55 @@
+<form [formGroup]="form">
+
+    <p-floatlabel>
+  <p-datepicker
+    formControlName="singleDate"
+    [showIcon]="true"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    [disabledDates]="disabledDates"
+    dateFormat="dd/mm/yy"
+    inputId="singleDate"
+    [class.ng-valid-field]="isValid('singleDate')"
+    [class.ng-invalid-field]="isInvalid('singleDate')"
+  />
+  <label for="singleDate">Select Date</label>
+</p-floatlabel>
+
+<small *ngIf="isInvalid('singleDate')" class="error">
+  Date is required
+</small>
+
+<br/><br/>
+
+<p-floatlabel>
+  <p-datepicker
+    formControlName="dateRange"
+    selectionMode="range"
+    [showIcon]="true"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    dateFormat="dd/mm/yy"
+    inputId="range"
+    [class.ng-valid-field]="isValid('dateRange')"
+    [class.ng-invalid-field]="isInvalid('dateRange')"
+  />
+  <label for="range">Select Date Range</label>
+</p-floatlabel>
+
+<small *ngIf="isInvalid('dateRange')" class="error">
+  Date range required
+</small>
+
+
+<br/><br/>
+
+<p-floatlabel>
+  <p-datepicker
+    formControlName="today"
+    [disabled]="true"
+    dateFormat="dd/mm/yy"
+    inputId="disabledDate"
+  />
+  <label for="disabledDate">Disabled Date</label>
+</p-floatlabel>
+</form>

@@ -1,0 +1,28 @@
+<button pButton label="Add User" icon="pi pi-plus" (click)="showDialog()"></button>
+
+<p-dialog 
+  header="Add User"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '420px' }">
+
+  <div class="p-fluid">
+
+    <div class="field">
+      <label>Name</label>
+      <input pInputText [(ngModel)]="user.name" />
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input pInputText [(ngModel)]="user.email" />
+    </div>
+
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton label="Cancel" class="p-button-text" (click)="visible=false"></button>
+    <button pButton label="Save" icon="pi pi-check" (click)="save()"></button>
+  </ng-template>
+
+</p-dialog>

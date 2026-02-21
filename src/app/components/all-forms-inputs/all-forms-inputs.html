@@ -1,0 +1,59 @@
+<form [formGroup]="form" class="grid p-fluid">
+
+  <!-- Name -->
+  <div class="field col-12 md:col-6">
+    <label>Name</label>
+    <input pInputText formControlName="name" />
+  </div>
+
+  <!-- Email -->
+  <div class="field col-12 md:col-6">
+    <label>Email</label>
+    <input pInputText type="email" formControlName="email" />
+  </div>
+
+  <!-- Textarea -->
+  <div class="field col-12">
+    <label>Address</label>
+    <textarea pInputTextarea rows="3" formControlName="address"></textarea>
+  </div>
+
+  <!-- Date Picker -->
+  <div class="field col-12 md:col-6">
+    <label>DOB</label>
+    <p-datePicker 
+        ngSkipHydration
+        formControlName="dob"
+        dateFormat="dd/mm/yy">
+    </p-datePicker>
+  </div>
+
+  <!-- Select (Dropdown replacement) -->
+  <div class="field col-12 md:col-6">
+    <label>Role</label>
+    <p-select
+      [options]="roles"
+      optionLabel="name"
+      optionValue="name"
+      formControlName="role">
+    </p-select>
+  </div>
+
+  <!-- Toggle Switch -->
+  <div class="field col-12 md:col-6">
+    <label>Notifications</label>
+    <p-toggleSwitch formControlName="notify"></p-toggleSwitch>
+  </div>
+
+  <!-- Multi Tags (Chips replacement) -->
+  <div class="field col-12">
+    <label>Skills</label>
+    <p-autoComplete
+      formControlName="skills"
+      [suggestions]="filteredSkills"
+      (completeMethod)="filterSkills($event)"
+      [multiple]="true">
+    </p-autoComplete>
+  </div>
+
+</form>

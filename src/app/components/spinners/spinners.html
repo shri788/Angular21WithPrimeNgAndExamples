@@ -1,0 +1,23 @@
+<p-progressSpinner style="width:30px;height:30px"></p-progressSpinner>
+<p-progressSpinner style="width:60px;height:60px"></p-progressSpinner>
+
+<p-progressBar mode="indeterminate"></p-progressBar>
+<p-progressBar [value]="60"></p-progressBar>
+
+<button pButton label="Save" [loading]="loading"></button>
+
+
+<p-skeleton width="100%" height="2rem"></p-skeleton>
+<p-skeleton width="50%" height="2rem"></p-skeleton>
+<p-skeleton width="100%" height="150px"></p-skeleton>
+
+<div style="width:300px">
+  <p-skeleton height="150px"></p-skeleton>
+  <p-skeleton width="70%" class="mt-2"></p-skeleton>
+  <p-skeleton width="40%" class="mt-2"></p-skeleton>
+</div>
+
+
+<div class="center-spinner">
+  <p-progressSpinner></p-progressSpinner>
+</div>

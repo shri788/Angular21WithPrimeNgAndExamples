@@ -1,0 +1,46 @@
+<p-datePicker 
+  [(ngModel)]="time"
+  [timeOnly]="true"
+  hourFormat="24">
+</p-datePicker>
+
+
+<p-datePicker 
+  formControlName="time"
+  [timeOnly]="true"
+  hourFormat="24">
+</p-datePicker>
+
+
+<p-datePicker 
+  [(ngModel)]="time"
+  [timeOnly]="true"
+  hourFormat="12">
+</p-datePicker>
+
+
+<p-datePicker 
+  [(ngModel)]="time"
+  [timeOnly]="true"
+  [showSeconds]="true"
+  hourFormat="24">
+</p-datePicker>
+
+<p-datePicker 
+  [(ngModel)]="time"
+  [timeOnly]="true"
+  [inline]="true">
+</p-datePicker>
+
+
+<div class="flex gap-2">
+  <p-datePicker [(ngModel)]="startTime" [timeOnly]="true"></p-datePicker>
+  <p-datePicker [(ngModel)]="endTime" [timeOnly]="true"></p-datePicker>
+</div>
+
+
+<p-datePicker 
+  [(ngModel)]="time"
+  [timeOnly]="true"
+  [showIcon]="true">
+</p-datePicker>

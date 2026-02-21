@@ -1,0 +1,27 @@
+<p-menubar
+  [model]="items"
+  class="bg-primary shadow-2 border-noround w-full px-3 text-white">
+
+  <ng-template pTemplate="start">
+    <span class="font-semibold text-lg text-white">My Company</span>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+
+    <p-menu
+      #avatarMenu
+      [popup]="true"
+      [model]="avatarItems"
+      class="surface-0 text-900 shadow-3 border-round">
+    </p-menu>
+
+    <p-avatar
+      [label]="initials"
+      shape="circle"
+      class="bg-white text-primary cursor-pointer"
+      (click)="avatarMenu.toggle($event)">
+    </p-avatar>
+
+  </ng-template>
+
+</p-menubar>

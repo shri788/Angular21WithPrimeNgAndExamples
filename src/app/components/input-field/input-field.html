@@ -1,0 +1,63 @@
+
+<form [formGroup]="form" class="input-form">
+    
+<p-floatlabel>
+  <input
+    pInputText
+    formControlName="textValue"
+    [class.ng-valid-field]="isValid('textValue')"
+    [class.ng-invalid-field]="isInvalid('textValue')"
+  />
+  <label>Text Input</label>
+</p-floatlabel>
+
+<small *ngIf="isInvalid('textValue')" class="error">
+  Minimum 3 characters required
+</small>
+
+<br/><br/>
+<p-floatlabel>
+  <p-inputNumber
+    formControlName="numberValue"
+    [useGrouping]="false"
+    [min]="1"
+    [max]="1000"
+    inputId="num"
+    [class.ng-valid-field]="isValid('textValue')"
+    [class.ng-invalid-field]="isInvalid('textValue')"
+  ></p-inputNumber>
+  <label for="num">Number (1-1000)</label>
+</p-floatlabel>
+
+<small *ngIf="isInvalid('numberValue')" class="error">
+  Enter number between 1 and 1000
+</small>
+<br/><br/>
+
+<p-floatlabel>
+  <p-inputNumber
+    formControlName="decimalValue"
+    mode="decimal"
+    [minFractionDigits]="2"
+    [maxFractionDigits]="2"
+    [min]="0.01"
+    [max]="1000"
+    inputId="decimal"
+    [class.ng-valid-field]="isValid('textValue')"
+    [class.ng-invalid-field]="isInvalid('textValue')"
+  ></p-inputNumber>
+  <label for="decimal">Decimal (0.01-1000)</label>
+</p-floatlabel>
+
+<small *ngIf="isInvalid('decimalValue')" class="error">
+  Enter valid decimal (2 digits only)
+</small>
+
+<br/><br/>
+<button pButton label="Submit" [disabled]="form.invalid"></button>
+
+
+</form>
+
+
+
