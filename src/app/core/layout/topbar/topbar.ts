@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 /* PrimeNG Components */
@@ -12,11 +12,27 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
-  imports: [MenubarModule, MenuModule, AvatarModule, CommonModule, RouterModule],
+  standalone: true,   // 🔥 THIS IS REQUIRED
+  imports: [
+    MenubarModule,
+    MenuModule,
+    AvatarModule,
+    CommonModule,
+    RouterModule
+  ],
   templateUrl: './topbar.html',
-  styleUrl: './topbar.scss',
+  styleUrls: ['./topbar.scss']   // also fix this (plural)
 })
-export class Topbar {
+export class Topbar implements AfterViewInit {
+  isBrowserReady = false;
+
+  avatarItems: MenuItem[] = [
+    { label: 'Profile', icon: 'pi pi-user', routerLink: '/profile' },
+    { label: 'Settings', icon: 'pi pi-cog', routerLink: '/settings' },
+    { separator: true },
+    { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.logout() }
+  ];
+  
   items: MenuItem[] = [
     {
       label: 'Dashboard',
@@ -48,13 +64,6 @@ export class Topbar {
     }
   ];
 
-  avatarItems: MenuItem[] = [
-    { label: 'Profile', icon: 'pi pi-user', routerLink: '/profile' },
-    { label: 'Settings', icon: 'pi pi-cog', routerLink: '/settings' },
-    { separator: true },
-    { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.logout() }
-  ];
-
   get initials(): string {
     const name = 'Radhe Shyam';
     return name.split(' ').map(x => x[0]).join(' ').toUpperCase();
@@ -63,5 +72,11 @@ export class Topbar {
   logout() {
     localStorage.clear();
     location.href = '/login';
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.isBrowserReady = true;
+    });
   }
 }

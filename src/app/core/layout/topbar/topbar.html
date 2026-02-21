@@ -6,12 +6,13 @@
     <span class="font-semibold text-lg text-white">My Company</span>
   </ng-template>
 
-  <ng-template pTemplate="end">
+  <ng-template pTemplate="end" *ngIf="isBrowserReady">
 
     <p-menu
       #avatarMenu
       [popup]="true"
       [model]="avatarItems"
+      appendTo="body"
       class="surface-0 text-900 shadow-3 border-round">
     </p-menu>
 
