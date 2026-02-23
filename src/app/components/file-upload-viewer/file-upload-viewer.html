@@ -1,0 +1,67 @@
+<div class="p-4 flex justify-content-center surface-ground min-h-screen">
+
+  <p-card styleClass="w-11 md:w-50rem shadow-3 border-round-xl">
+
+    <div class="text-center mb-4">
+      <h2>File Viewer</h2>
+      <small class="text-600">View PDF, Image, Video</small>
+    </div>
+
+    <!-- Upload -->
+    <p-fileUpload
+      mode="basic"
+      name="file"
+      [auto]="true"
+      [customUpload]="false"
+      (onSelect)="onSelect($event)"
+      chooseLabel="Choose File"
+      class="mb-3 w-full">
+    </p-fileUpload>
+
+    <!-- IMAGE -->
+    @if (fileType === 'image' && fileUrl) {
+      <div class="text-center">
+        <img [src]="fileUrl" class="w-full border-round shadow-2" />
+      </div>
+    }
+
+    <!-- PDF -->
+    @if (fileType === 'pdf' && fileUrl) {
+    <ngx-extended-pdf-viewer
+        [src]="fileUrl"
+        height="650px"
+        useBrowserLocale="true"
+        [showToolbar]="true"
+        [showSidebarButton]="false"
+        [showFindButton]="true"
+        [textLayer]="true">
+    </ngx-extended-pdf-viewer>
+    }
+
+    <!-- VIDEO -->
+    @if (fileType === 'video' && fileUrl) {
+      <video
+        [src]="fileUrl"
+        controls
+        class="w-full border-round shadow-2"
+        height="400">
+      </video>
+    }
+
+    <!-- UNKNOWN -->
+    @if (fileType === 'unknown' && fileUrl) {
+      <div class="text-center text-red-500">
+        Unsupported file type
+      </div>
+    }
+
+    <!-- Clear -->
+    @if (fileUrl) {
+      <div class="text-center mt-3">
+        <button pButton label="Clear" icon="pi pi-times" (click)="clear()"></button>
+      </div>
+    }
+
+  </p-card>
+
+</div>

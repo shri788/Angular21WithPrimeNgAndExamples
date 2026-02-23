@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 /* PrimeNG Components */
@@ -8,7 +8,7 @@ import { AvatarModule } from 'primeng/avatar';
 
 /* Angular */
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -24,13 +24,16 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./topbar.scss']   // also fix this (plural)
 })
 export class Topbar implements AfterViewInit {
+  private readonly router = inject(Router);
+
   isBrowserReady = false;
 
   avatarItems: MenuItem[] = [
     { label: 'Profile', icon: 'pi pi-user', routerLink: '/profile' },
     { label: 'Settings', icon: 'pi pi-cog', routerLink: '/settings' },
     { separator: true },
-    { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.logout() }
+    { label: 'Logout', icon: 'pi pi-sign-out', command: () => this.logout() },
+    { label: 'Log In', icon: 'pi pi-sign-out', command: () => this.login() }
   ];
   
   items: MenuItem[] = [
@@ -79,5 +82,9 @@ export class Topbar implements AfterViewInit {
       this.isBrowserReady = true;
       console.log('Browser is ready, Topbar component initialized.');
     });
+  }
+
+  login() {
+    this.router.navigateByUrl('/login');
   }
 }

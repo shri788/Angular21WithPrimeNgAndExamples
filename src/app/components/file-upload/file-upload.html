@@ -1,0 +1,107 @@
+<p-toast></p-toast>
+
+<div class="flex align-items-center justify-content-center min-h-screen surface-ground">
+
+  <p-card styleClass="w-11 sm:w-40rem shadow-3 border-round-xl">
+
+    <div class="text-center mb-4">
+      <h2 class="m-0">File Upload</h2>
+      <small class="text-600">Upload documents securely</small>
+    </div>
+
+    <p-fileUpload
+      mode="advanced"
+      name="files"
+      [multiple]="true"
+      accept=".jpg,.png,.pdf,.mp4,.doc,.docx,.zip"
+      [maxFileSize]="5000000"
+      [customUpload]="true"
+      (uploadHandler)="uploadFiles($event)"
+      class="w-full">
+
+      <!-- Drag Area -->
+      <ng-template pTemplate="content">
+        <div class="text-center p-4 border-2 border-dashed border-300 border-round">
+          <i class="pi pi-cloud-upload text-4xl text-primary mb-2"></i>
+          <div class="font-semibold">Drag & Drop files here</div>
+          <small class="text-500">Max 5MB</small>
+        </div>
+      </ng-template>
+
+      <!-- Custom File Row -->
+      <ng-template pTemplate="file" let-file>
+
+        <div class="flex align-items-center justify-content-between w-full">
+
+          <div class="flex align-items-center gap-3 overflow-hidden w-full">
+
+            <!-- IMAGE -->
+            @if (file.type?.startsWith('image/')) {
+
+              <img
+                [src]="file.objectURL"
+                width="45"
+                height="45"
+                class="border-round"
+                style="object-fit: cover;" />
+
+              <span class="font-medium">Image File</span>
+
+            }
+
+            <!-- PDF -->
+            @else if (file.type === 'application/pdf') {
+
+              <i class="pi pi-file-pdf text-red-500 text-2xl"></i>
+              <span class="font-medium">PDF File</span>
+
+            }
+
+            <!-- MP4 -->
+            @else if (file.type === 'video/mp4') {
+
+              <i class="pi pi-video text-blue-500 text-2xl"></i>
+              <span class="font-medium">MP4 File</span>
+
+            }
+
+            <!-- OTHER -->
+            @else {
+
+              <i class="pi pi-file text-primary text-2xl"></i>
+              <span class="font-medium">
+                File - {{ file.name.split('.').pop()?.toUpperCase() }}
+              </span>
+
+            }
+
+            <!-- File Name -->
+            <span
+              class="white-space-nowrap overflow-hidden text-overflow-ellipsis block w-full text-600"
+              title="{{ file.name }}">
+              {{ file.name }}
+            </span>
+
+          </div>
+
+          <span class="text-500 text-sm">
+            {{ (file.size / 1024).toFixed(1) }} KB
+          </span>
+
+        </div>
+
+      </ng-template>
+
+    </p-fileUpload>
+
+    <!-- Progress -->
+    @if (uploading) {
+      <div class="mt-3">
+        <p-progressBar [value]="uploadProgress"></p-progressBar>
+        <small class="text-600">{{ uploadProgress }}% uploaded</small>
+      </div>
+    }
+
+  </p-card>
+
+</div>
