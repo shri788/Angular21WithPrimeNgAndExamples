@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 /* PrimeNG Components */
@@ -12,7 +12,7 @@ import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
-  standalone: true,   // 🔥 THIS IS REQUIRED
+  standalone: true,
   imports: [
     MenubarModule,
     MenuModule,
@@ -21,9 +21,10 @@ import { Router, RouterModule } from '@angular/router';
     RouterModule
   ],
   templateUrl: './topbar.html',
-  styleUrls: ['./topbar.scss']   // also fix this (plural)
+  styleUrls: ['./topbar.scss']
 })
 export class Topbar implements AfterViewInit {
+  private readonly cd = inject(ChangeDetectorRef);
   private readonly router = inject(Router);
 
   isBrowserReady = false;
@@ -80,6 +81,7 @@ export class Topbar implements AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.isBrowserReady = true;
+      this.cd.detectChanges();
       console.log('Browser is ready, Topbar component initialized.');
     });
   }
