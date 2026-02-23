@@ -1,9 +1,9 @@
 <p-menubar
   [model]="items"
-  class="bg-primary shadow-2 border-noround w-full px-3 text-white">
+  class="bg-secondary shadow-2 border-noround w-full px-3 text-black">
 
   <ng-template pTemplate="start">
-    <span class="font-semibold text-lg text-white">My Company</span>
+    <span class="font-semibold text-lg">My Company</span>
   </ng-template>
   
   <ng-template pTemplate="end">
@@ -21,7 +21,7 @@
       <p-avatar
         [label]="initials"
         shape="circle"
-        class="bg-white text-primary cursor-pointer"
+        class="bg-base-700 text-primary cursor-pointer"
         (click)="avatarMenu.toggle($event)">
       </p-avatar>
 
