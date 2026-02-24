@@ -1,0 +1,170 @@
+<p-toast></p-toast>
+
+<div class="p-4 w-full">
+
+  <p-card class="w-full shadow-2">
+
+    <!-- Header -->
+    <div class="mb-4">
+      <h2 class="m-0">University Registration</h2>
+      <small class="text-600">Fill student details carefully</small>
+    </div>
+
+    <form [formGroup]="form" class="p-fluid">
+
+      <!-- ================= PERSONAL ================= -->
+      <div class="mb-4">
+        <h4 class="mb-3">Personal Information</h4>
+
+        <div class="grid">
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">First Name</label>
+            <input pInputText formControlName="firstName" class="w-full" />
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Last Name</label>
+            <input pInputText formControlName="lastName" class="w-full" />
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Email</label>
+            <input pInputText type="email" formControlName="email" class="w-full" />
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Password</label>
+            <p-password formControlName="password" toggleMask [fluid]="true"></p-password>
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Phone</label>
+            <p-inputMask mask="9999999999" formControlName="phone" class="w-full"></p-inputMask>
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Date of Birth</label>
+            <p-datePicker formControlName="dob" ngSkipHydration [fluid]="true"></p-datePicker>
+          </div>
+
+        </div>
+      </div>
+
+      <p-divider></p-divider>
+
+      <!-- ================= ACADEMIC ================= -->
+      <div class="mb-4">
+        <h4 class="mb-3">Academic Information</h4>
+
+        <div class="grid">
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Department</label>
+            <p-select
+              [options]="departments"
+              formControlName="department"
+              optionLabel="label"
+              placeholder="Select Department"
+              [fluid]="true">
+            </p-select>
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Skills</label>
+            <p-multiSelect
+              [options]="skills"
+              formControlName="skills"
+              optionLabel="label"
+              placeholder="Select Skills"
+              [fluid]="true">
+            </p-multiSelect>
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Country</label>
+            <p-autoComplete
+              formControlName="country"
+              [suggestions]="filteredCountries"
+              (completeMethod)="searchCountry($event)"
+              [fluid]="true">
+            </p-autoComplete>
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">CGPA</label>
+            <p-inputNumber
+              formControlName="cgpa"
+              [min]="0"
+              [max]="10"
+              [fluid]="true">
+            </p-inputNumber>
+          </div>
+
+        </div>
+      </div>
+
+      <p-divider></p-divider>
+
+      <!-- ================= OTHER ================= -->
+      <div class="mb-4">
+        <h4 class="mb-3">Other Details</h4>
+
+        <div class="grid">
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Gender</label>
+            <div class="flex gap-4">
+              <div class="flex align-items-center gap-2">
+                <p-radioButton name="gender" value="Male" formControlName="gender"></p-radioButton>
+                <label>Male</label>
+              </div>
+              <div class="flex align-items-center gap-2">
+                <p-radioButton name="gender" value="Female" formControlName="gender"></p-radioButton>
+                <label>Female</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Hostel Required</label>
+            <p-toggleButton
+              formControlName="hostel"
+              onLabel="Yes"
+              offLabel="No"
+              [fluid]="true">
+            </p-toggleButton>
+          </div>
+
+          <div class="col-12">
+            <label class="block mb-2">Short Bio</label>
+            <textarea rows="5" cols="30" pTextarea formControlName="bio" class="w-full"></textarea>
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Satisfaction Level</label>
+            <p-slider formControlName="satisfaction" [min]="1" [max]="5" class="w-full"></p-slider>
+          </div>
+
+          <div class="col-12 md:col-6">
+            <label class="block mb-2">Rate University</label>
+            <p-rating formControlName="satisfaction"></p-rating>
+          </div>
+
+          <div class="col-12">
+            <label class="block mb-2">Upload Documents</label>
+            <p-fileUpload mode="basic" name="documents" class="w-full"></p-fileUpload>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="flex justify-content-end">
+        <button pButton label="Register" icon="pi pi-check"></button>
+      </div>
+
+    </form>
+
+  </p-card>
+</div>

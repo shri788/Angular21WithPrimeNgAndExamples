@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Layout } from './core/layout/layout';
 import { Login } from './components/login/login';
 import { FileUploadWithDrag } from './components/file-upload-with-drag/file-upload-with-drag';
+import { Register } from './components/register/register';
 // import { FileUpload } from 'primeng/fileupload';
 // import { FileUploadViewer } from './components/file-upload-viewer/file-upload-viewer';
 
@@ -21,6 +22,10 @@ export const routes: Routes = [
             {
                 path: 'uploadWithDrag',
                 component: FileUploadWithDrag
+            },
+            {
+                path: 'register',
+                component: Register
             }
             // {
             //     path: 'upload',
