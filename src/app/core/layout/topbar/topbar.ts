@@ -19,7 +19,7 @@ import { Router, RouterModule } from '@angular/router';
     AvatarModule,
     CommonModule,
     RouterModule
-  ],
+],
   templateUrl: './topbar.html',
   styleUrls: ['./topbar.scss']
 })

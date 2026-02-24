@@ -1,24 +1,32 @@
-<!-- <app-topbar-menu></app-topbar-menu> -->
-<!-- <app-card></app-card> -->
-<!-- <app-data-table></app-data-table> -->
-<!-- <app-all-buttons></app-all-buttons> -->
-<!-- <app-all-forms-inputs></app-all-forms-inputs> -->
-<!-- <app-dialog-pop></app-dialog-pop> -->
-<!-- <app-gallery></app-gallery> -->
-<!-- <app-spinners></app-spinners> -->
-<!-- <app-checkboxes></app-checkboxes> -->
-<!-- <app-badges></app-badges> -->
-<!-- <app-snackbars></app-snackbars> -->
-<!-- <app-headers-with-menu></app-headers-with-menu> -->
-<!-- <app-tree-structure></app-tree-structure> -->
-<!-- <app-tooltips  ngSkipHydration></app-tooltips> -->
-<!-- <app-time-pickers ngSkipHydration></app-time-pickers> -->
-<!-- <app-tabs></app-tabs> -->
-<!-- <app-steppers></app-steppers> -->
-<!-- <app-input-field></app-input-field> -->
-<!-- <app-select-fields></app-select-fields> -->
-<!-- <app-date-fields ngSkipHydration></app-date-fields> -->
-<!-- <app-full-calender></app-full-calender> -->
-<!-- <app-autocomplete-field></app-autocomplete-field> -->
+<!-- Floating Gear -->
+<div
+  class="fixed z-5"
+  style="right:1.25rem; bottom:1.25rem; pointer-events:none;"
+>
+  <button
+    pButton
+    icon="pi pi-cog"
+    class="p-button-rounded p-button-primary shadow-3"
+    style="pointer-events:auto;"
+    (click)="drawerVisible = true"
+  ></button>
+</div>
+
+<!-- Theme Drawer -->
+<p-drawer [(visible)]="drawerVisible" position="right" styleClass="w-20rem">
+
+  <h3 class="mb-2">Base Themes</h3>
+  <div class="flex flex-column gap-2 mb-3">
+    <button pButton label="Lara" (click)="setTheme('lara')"></button>
+    <button pButton label="Aura" (click)="setTheme('aura')"></button>
+    <button pButton label="Material" (click)="setTheme('material')"></button>
+    <button pButton label="Nora" (click)="setTheme('nora')"></button>
+  </div>
+
+  <h3 class="mt-3">Mode</h3>
+  <button pButton label="Toggle Dark Mode" class="w-full"
+          (click)="toggleDark()"></button>
+
+</p-drawer>
 
 <router-outlet />

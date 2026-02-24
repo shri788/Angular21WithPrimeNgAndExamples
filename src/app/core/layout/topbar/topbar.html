@@ -1,33 +1,31 @@
-<p-menubar
-  [model]="items"
-  class="bg-secondary shadow-2 border-noround w-full px-3 text-black">
+<div class="surface-0 shadow-2">
+  <p-menubar
+    [model]="items"
+    class="w-full px-4 py-2 text-black border-noround bg-transparent"
+  >
+    <ng-template pTemplate="start">
+      <span class="font-semibold text-lg">My Company</span>
+    </ng-template>
 
-  <ng-template pTemplate="start">
-    <span class="font-semibold text-lg">My Company</span>
-  </ng-template>
-  
-  <ng-template pTemplate="end">
+    <ng-template pTemplate="end">
+      @if (isBrowserReady) {
 
-    @if (isBrowserReady) {
+        <p-menu
+          #avatarMenu
+          [popup]="true"
+          [model]="avatarItems"
+          appendTo="body"
+          class="surface-0 text-900 shadow-3 border-round">
+        </p-menu>
 
-      <p-menu
-        #avatarMenu
-        [popup]="true"
-        [model]="avatarItems"
-        appendTo="body"
-        class="surface-0 text-900 shadow-3 border-round">
-      </p-menu>
+        <p-avatar
+          [label]="initials"
+          shape="circle"
+          class="bg-base-700 text-primary cursor-pointer"
+          (click)="avatarMenu.toggle($event)">
+        </p-avatar>
 
-      <p-avatar
-        [label]="initials"
-        shape="circle"
-        class="bg-base-700 text-primary cursor-pointer"
-        (click)="avatarMenu.toggle($event)">
-      </p-avatar>
-
-    }
-
-  </ng-template>
-  
-
-</p-menubar>
+      }
+    </ng-template>
+  </p-menubar>
+</div>
