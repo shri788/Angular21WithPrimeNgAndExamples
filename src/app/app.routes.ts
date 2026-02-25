@@ -3,6 +3,7 @@ import { Layout } from './core/layout/layout';
 import { Login } from './components/login/login';
 import { FileUploadWithDrag } from './components/file-upload-with-drag/file-upload-with-drag';
 import { Register } from './components/register/register';
+import { AiChat } from './aiChat/ai-chat/ai-chat';
 // import { FileUpload } from 'primeng/fileupload';
 // import { FileUploadViewer } from './components/file-upload-viewer/file-upload-viewer';
 
@@ -26,6 +27,10 @@ export const routes: Routes = [
             {
                 path: 'register',
                 component: Register
+            },
+            {
+                path: 'ai-chat',
+                component: AiChat
             }
             // {
             //     path: 'upload',
